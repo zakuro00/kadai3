@@ -10,15 +10,12 @@ class BooksController < ApplicationController
     # 3. データをデータベースに保存するためのsaveメソッド実行
     if @book.save
     
-    flash[:notice] = "You have created book successfully."
-      redirect_to book_path(@book.id)
+     flash[:notice] = "You have created book successfully."
+       redirect_to book_path(@book.id)
     else
-      flash.now[:alert]="error"
-      render :edit 
+       flash.now[:alert]="error"
+       render :edit 
     end
-    
-    
-    
   end
   
   def index
@@ -36,7 +33,7 @@ class BooksController < ApplicationController
   private
  
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :image)
   end
 
 end

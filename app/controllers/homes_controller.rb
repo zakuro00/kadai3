@@ -8,6 +8,10 @@ class HomesController < ApplicationController
   
   end
   
+  def top
+    flash[:notice] = "Signed out successfully."
+  end
+  
   private
   def book_params
     params.require(:book).permit(:title, :body)
