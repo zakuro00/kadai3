@@ -4,14 +4,12 @@
   </div>
 <% end %>
 
-
-
-
-
-
-
-
-
+<h1>User info</h1>
+<div>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <p><strong>name  </strong><%= @user.name %></p>
+  <p><strong>introduction  </strong><%= @user.introduction %></p>
+</div>
 
 
 <h1>New book</h1>
@@ -24,4 +22,20 @@
   <%= f.text_area :body %>
 	
   <%= f.submit 'Create Book' %>
+<% end %>
+
+
+
+<!-- ユーザーの投稿一覧 -->
+
+<% @books.each do |book| %>
+<div>
+ 
+  <%= link_to books_path(book.id) do %>
+    <%= image_tag post_image.get_image %>
+  <% end %>
+  <%= image_tag book.user.get_profile_image(100,100) %>
+  <p>name：<%= book.user.name %></p>
+  <p>introduction：<%= book.caption %></p>
+</div>
 <% end %>
