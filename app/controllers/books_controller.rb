@@ -11,7 +11,7 @@ class BooksController < ApplicationController
     # 3. データをデータベースに保存するためのsaveメソッド実行
     if @book.save
     
-     flash[:notice] = "You have created book successfully."
+      flash[:notice] = "You have created book successfully."
        redirect_to book_path(@book.id)
     else
        flash.now[:alert]="error"
