@@ -1,9 +1,12 @@
-<h2>Book detail</h2>
-<% if @book.image.attached? %>
-   <%= image_tag @book.image, size: "300x300" %>
-<% else %>
-  <%= image_tag 'no_image', size: "300x300" %>
-<% end %>
+<%= render 'books', user: @user, book: @book %>
+
+
+<h2>Books detail</h2>
+
+   
+   
+   <%= image_tag @book.user.get_profile_image(100,100) %>
+  
 
 <p><%= @book.title %></p>
 
@@ -12,5 +15,5 @@
 
 
 
-<%= link_to "edit", edit_list_path(@list.id) %>
-<%= link_to "Destroy", destroy_book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<%= link_to "edit", edit_book_path(@book.id) %>
+<%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>

@@ -1,10 +1,8 @@
+<%= render 'books/book', user: @user, book: @book %>
+
 <% @books.each do |book| %>
   <div>
-    <% if list.image.attached? %>
-      <%= image_tag list.image, size: "200x200" %>
-    <% else %>
-      <%= image_tag 'no_image', size: "200x200" %>
-    <% end %>
+     <%= image_tag @user.get_profile_image(100,100) %>
     <p>name：<%= post_image.user.name %></p>
     <p>Title：<%= book.user_name %></p>
     <p>Opinion：<%= book.caption %></p>
