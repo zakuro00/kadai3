@@ -9,6 +9,9 @@
   <%= image_tag @user.get_profile_image(100,100) %>
   <p><strong>name  </strong><%= @user.name %></p>
   <p><strong>introduction  </strong><%= @user.introduction %></p>
+  <% if @user == current_user %>
+    <%= link_to "プロフィール編集", edit_user_path(@user) %>
+  <% end %>
 </div>
 
 
