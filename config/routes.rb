@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :books, only: [:new, :index, :show,:create,:destroy,:edit,:update]
  
   resources :users, only:[:show, :index, :edit, :update]
-  #get 'books/:id' => 'books#show', as: 'book'
+  
   root to: 'homes#top'
   get 'homes/about' => 'homes#about', as: 'about'
   
