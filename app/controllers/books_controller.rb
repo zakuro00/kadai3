@@ -10,14 +10,13 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     # 3. データをデータベースに保存するためのsaveメソッド実行
     if @book.save
-    
-      flash[:notice] = "You have created book successfully."
-       redirect_to book_path(@book.id)
+        flash[:notice] = "You have created book successfully."
+        redirect_to book_path(@book.id)
     else
-       flash.now[:alert]="error"
-       @books = Book.all
-       @user = current_user
-       render :index
+        flash.now[:notice]="error"
+        @books = Book.all
+        @user = current_user
+        render :index
     end
   end
   
@@ -37,6 +36,18 @@ class BooksController < ApplicationController
   def edit
     @book = Book.find(params[:id])
   end
+  
+  def update
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to book_path(@book.id) 
+      flash[:notice] = "You have updated book successfully."
+    else
+      flash.now[:alert]="error"
+      render :edit 
+    end
+  end
+
   
   def destroy
     book = Book.find(params[:id])  # データ（レコード）を1件取得
